@@ -72,10 +72,16 @@
             margin-bottom: 0.5rem;
         }
         .logo span {
-            background: linear-gradient(135deg, #38b6ff, #7ec8e3);
+            background: linear-gradient(135deg, #38b6ff, #7ec8e3, #38b6ff);
+            background-size: 200% 100%;
             -webkit-background-clip: text;
             -webkit-text-fill-color: transparent;
             background-clip: text;
+            animation: logoShimmer 4s ease-in-out infinite;
+        }
+        @keyframes logoShimmer {
+            0%, 100% { background-position: 0% center; }
+            50% { background-position: 100% center; }
         }
         .tagline {
             font-size: 1.1rem;
@@ -104,12 +110,32 @@
         .app-icon {
             width: 48px;
             height: 48px;
-            background: linear-gradient(135deg, #ff6b35, #ff8f65);
             border-radius: 12px;
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            font-size: 1.5rem;
+            object-fit: cover;
+            position: relative;
+        }
+        .app-card .app-icon-wrap {
+            position: relative;
+            width: 48px;
+            height: 48px;
+            flex-shrink: 0;
+        }
+        .app-card .app-icon-wrap::after {
+            content: '';
+            position: absolute;
+            top: -2px;
+            left: -50%;
+            width: 200%;
+            height: calc(100% + 4px);
+            background: linear-gradient(90deg, transparent 0%, rgba(255,255,255,0.3) 50%, transparent 100%);
+            animation: shimmer 3s ease-in-out infinite;
+            pointer-events: none;
+            border-radius: 12px;
+        }
+        @keyframes shimmer {
+            0% { transform: translateX(-100%); opacity: 0; }
+            50% { opacity: 1; }
+            100% { transform: translateX(100%); opacity: 0; }
         }
         .app-info { text-align: left; }
         .app-name { font-weight: 600; font-size: 1rem; }
@@ -138,7 +164,9 @@
         <p class="tagline">Crafting mobile experiences</p>
         <div class="apps">
             <a class="app-card" href="/reelchef/">
-                <div class="app-icon">🍳</div>
+                <div class="app-icon-wrap">
+                    <img class="app-icon" src="/assets/reelchef-icon.png" alt="ReelChef">
+                </div>
                 <div class="app-info">
                     <div class="app-name">ReelChef</div>
                     <div class="app-desc">Recipe discovery powered by AI</div>
