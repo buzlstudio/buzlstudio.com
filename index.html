@@ -1,0 +1,94 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Buzl Studio</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet">
+    <style>
+        * { margin: 0; padding: 0; box-sizing: border-box; }
+        body {
+            font-family: 'Inter', -apple-system, sans-serif;
+            background: #0a0a0a;
+            color: #fafafa;
+            min-height: 100vh;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            justify-content: center;
+        }
+        .container {
+            text-align: center;
+            padding: 2rem;
+            max-width: 600px;
+        }
+        .logo {
+            font-size: 2.5rem;
+            font-weight: 700;
+            letter-spacing: -0.02em;
+            margin-bottom: 0.5rem;
+        }
+        .logo span { color: #ff6b35; }
+        .tagline {
+            font-size: 1.1rem;
+            color: #888;
+            margin-bottom: 3rem;
+        }
+        .apps { margin-bottom: 3rem; }
+        .app-card {
+            display: inline-flex;
+            align-items: center;
+            gap: 1rem;
+            background: #161616;
+            border: 1px solid #222;
+            border-radius: 16px;
+            padding: 1rem 1.5rem;
+            text-decoration: none;
+            color: #fafafa;
+            transition: border-color 0.2s;
+        }
+        .app-card:hover { border-color: #ff6b35; }
+        .app-icon {
+            width: 48px;
+            height: 48px;
+            background: linear-gradient(135deg, #ff6b35, #ff8f65);
+            border-radius: 12px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 1.5rem;
+        }
+        .app-info { text-align: left; }
+        .app-name { font-weight: 600; font-size: 1rem; }
+        .app-desc { font-size: 0.85rem; color: #888; }
+        footer {
+            position: fixed;
+            bottom: 2rem;
+            font-size: 0.8rem;
+            color: #555;
+        }
+        footer a { color: #666; text-decoration: none; }
+        footer a:hover { color: #999; }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <div class="logo"><span>Buzl</span> Studio</div>
+        <p class="tagline">Crafting mobile experiences</p>
+        <div class="apps">
+            <a class="app-card" href="/reelchef/">
+                <div class="app-icon">🍳</div>
+                <div class="app-info">
+                    <div class="app-name">ReelChef</div>
+                    <div class="app-desc">Extract recipes from Instagram Reels</div>
+                </div>
+            </a>
+        </div>
+    </div>
+    <footer>
+        &copy; 2026 Buzl Studio &middot;
+        <a href="mailto:support@buzlstudio.com">Contact</a>
+    </footer>
+</body>
+</html>
