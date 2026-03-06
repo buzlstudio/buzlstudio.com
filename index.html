@@ -10,18 +10,60 @@
         * { margin: 0; padding: 0; box-sizing: border-box; }
         body {
             font-family: 'Inter', -apple-system, sans-serif;
-            background: #0a0a0a;
-            color: #fafafa;
+            background: #050a14;
+            color: #e8f0fe;
             min-height: 100vh;
             display: flex;
             flex-direction: column;
             align-items: center;
             justify-content: center;
+            overflow: hidden;
+            position: relative;
+        }
+        body::before {
+            content: '';
+            position: fixed;
+            top: -50%;
+            left: -50%;
+            width: 200%;
+            height: 200%;
+            background: radial-gradient(ellipse at 30% 20%, rgba(56, 182, 255, 0.08) 0%, transparent 50%),
+                        radial-gradient(ellipse at 70% 80%, rgba(120, 200, 255, 0.05) 0%, transparent 50%),
+                        radial-gradient(ellipse at 50% 50%, rgba(56, 182, 255, 0.03) 0%, transparent 70%);
+            animation: aurora 15s ease-in-out infinite alternate;
+            pointer-events: none;
+            z-index: 0;
+        }
+        @keyframes aurora {
+            0% { transform: translate(0, 0) rotate(0deg); }
+            50% { transform: translate(-2%, 1%) rotate(1deg); }
+            100% { transform: translate(1%, -1%) rotate(-1deg); }
+        }
+        .frost-particle {
+            position: fixed;
+            width: 3px;
+            height: 3px;
+            background: rgba(150, 210, 255, 0.4);
+            border-radius: 50%;
+            pointer-events: none;
+            z-index: 0;
+        }
+        .frost-particle:nth-child(1) { top: 15%; left: 20%; animation: float 8s ease-in-out infinite; }
+        .frost-particle:nth-child(2) { top: 30%; left: 75%; animation: float 11s ease-in-out infinite 2s; width: 2px; height: 2px; }
+        .frost-particle:nth-child(3) { top: 65%; left: 15%; animation: float 9s ease-in-out infinite 4s; }
+        .frost-particle:nth-child(4) { top: 80%; left: 60%; animation: float 13s ease-in-out infinite 1s; width: 4px; height: 4px; opacity: 0.3; }
+        .frost-particle:nth-child(5) { top: 45%; left: 85%; animation: float 10s ease-in-out infinite 3s; width: 2px; height: 2px; }
+        .frost-particle:nth-child(6) { top: 10%; left: 55%; animation: float 12s ease-in-out infinite 5s; }
+        @keyframes float {
+            0%, 100% { transform: translateY(0) translateX(0); opacity: 0.4; }
+            50% { transform: translateY(-20px) translateX(10px); opacity: 0.7; }
         }
         .container {
             text-align: center;
             padding: 2rem;
             max-width: 600px;
+            position: relative;
+            z-index: 1;
         }
         .logo {
             font-size: 2.5rem;
@@ -29,10 +71,15 @@
             letter-spacing: -0.02em;
             margin-bottom: 0.5rem;
         }
-        .logo span { color: #ff6b35; }
+        .logo span {
+            background: linear-gradient(135deg, #38b6ff, #7ec8e3);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            background-clip: text;
+        }
         .tagline {
             font-size: 1.1rem;
-            color: #888;
+            color: #6b8aad;
             margin-bottom: 3rem;
         }
         .apps { margin-bottom: 3rem; }
@@ -40,15 +87,20 @@
             display: inline-flex;
             align-items: center;
             gap: 1rem;
-            background: #161616;
-            border: 1px solid #222;
+            background: rgba(15, 25, 45, 0.7);
+            border: 1px solid rgba(56, 182, 255, 0.15);
             border-radius: 16px;
             padding: 1rem 1.5rem;
             text-decoration: none;
-            color: #fafafa;
-            transition: border-color 0.2s;
+            color: #e8f0fe;
+            transition: all 0.3s ease;
+            backdrop-filter: blur(10px);
         }
-        .app-card:hover { border-color: #ff6b35; }
+        .app-card:hover {
+            border-color: rgba(56, 182, 255, 0.4);
+            box-shadow: 0 0 20px rgba(56, 182, 255, 0.1);
+            transform: translateY(-2px);
+        }
         .app-icon {
             width: 48px;
             height: 48px;
@@ -61,18 +113,26 @@
         }
         .app-info { text-align: left; }
         .app-name { font-weight: 600; font-size: 1rem; }
-        .app-desc { font-size: 0.85rem; color: #888; }
+        .app-desc { font-size: 0.85rem; color: #6b8aad; }
         footer {
             position: fixed;
             bottom: 2rem;
             font-size: 0.8rem;
-            color: #555;
+            color: #3a5070;
+            z-index: 1;
         }
-        footer a { color: #666; text-decoration: none; }
-        footer a:hover { color: #999; }
+        footer a { color: #4a6a90; text-decoration: none; }
+        footer a:hover { color: #38b6ff; }
     </style>
 </head>
 <body>
+    <div class="frost-particle"></div>
+    <div class="frost-particle"></div>
+    <div class="frost-particle"></div>
+    <div class="frost-particle"></div>
+    <div class="frost-particle"></div>
+    <div class="frost-particle"></div>
+
     <div class="container">
         <div class="logo"><span>Buzl</span> Studio</div>
         <p class="tagline">Crafting mobile experiences</p>
@@ -81,7 +141,7 @@
                 <div class="app-icon">🍳</div>
                 <div class="app-info">
                     <div class="app-name">ReelChef</div>
-                    <div class="app-desc">Extract recipes from Instagram Reels</div>
+                    <div class="app-desc">Recipe discovery powered by AI</div>
                 </div>
             </a>
         </div>
